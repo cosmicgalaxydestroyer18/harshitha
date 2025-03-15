@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 YEARS OF US</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fce4ec;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+        }
+        .hearts {
+            font-size: 2em;
+            color: red;
+        }
+        .timeline-container {
+            width: 100%;
+            overflow-y: auto;
+            height: 200vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px 0;
+            position: relative;
+        }
+        .timeline {
+            position: relative;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .event {
+            width: 300px;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            font-family: 'Comic Sans MS', cursive;
+        }
+        .event:nth-child(1) { background-color: #ff9999; color: white; }
+        .event:nth-child(3) { background-color: red; color: white; }
+        .event:nth-child(5) { background-color: blueviolet; color: white; }
+        .event:nth-child(7) { background-color: maroon; color: white; }
+        .event:nth-child(9) { background-color: purple; color: white; }
+        .event:nth-child(11) { background: linear-gradient(to right, red, pink); color: white; border: 2px solid #ff6699; }
+        .event:nth-child(13) { background-color: darkblue; color: white; }
+        .event:nth-child(15) { background-color: teal; color: white; }
+        .event:nth-child(17) { background-color: #ff6600; color: white; }
+        .event:nth-child(19) { background-color: #ff33cc; color: white; }
+        .event:nth-child(21) { background-color: #ff99cc; color: white; }
+        .event:nth-child(23) { background-color: #ff66cc; color: white; } /* 'YOU HURT YOUR EYEBROW' */
+        .event:nth-child(25) { background-color: #ffcc00; color: white; } /* 'ECE SEMINAR SATURDAY HEAD' */
+        .event:nth-child(27) { background-color: #32CD32; color: white; } /* 'BROUGHT YOU TO MY AREA' */
+        .event:nth-child(29) { background-color: #FF6347; color: white; } /* 'FIRST DRESS SHOPPING DATE' */
+        .event:nth-child(31) { background-color: #FFD700; color: white; } /* 'FIRST ART OF DELIGHT DATE' */
+
+        /* Flower icon added styling */
+        .flowers {
+            font-size: 2em;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .flowers-left {
+            left: -35px;
+        }
+        .flowers-right {
+            right: -35px;
+        }
+
+        .date {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1em;
+            font-weight: bold;
+            color: black;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            width: 5px;
+            background-color: red;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .connector {
+            width: 5px;
+            height: 30px;
+            background-color: red;
+            margin: 5px 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .modal button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>3 YEARS OF US</h1>
+    <div class="hearts">❤️❤️❤️</div>
+    <div class="timeline-container">
+        <div class="timeline">
+            <div class="event" onclick="showEventDetails(1)">
+                <span>FIRST SOLID CONVO</span>
+                <span class="date">04-01-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(2)">
+                <span>I SAW AN ANGEL</span>
+                <span class="date">15-12-21</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(3)">
+                <span>CONVINCED YOU TO COME CHINLUNGS</span>
+                <span class="date">14-01-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(4)">
+                <span>CHILLUMS CAFE DAY</span>
+                <span class="date">17-01-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(5)">
+                <span style="color: darkred;">SMOKY CAFE DAY</span>
+                <span class="date">19-01-22 💜</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(6)">
+                <span>THE AMAZING FIRST KISS</span>
+                <span class="date">21-01-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(7)">
+                <span>5TH AVENUE CAFE DAY</span>
+                <span class="date">24-01-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(8)">
+                <span>THE MOST HOTTEST SESH IN FORUM</span>
+                <span class="date">01-02-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(9)">
+                <span>ONESTA GROUP DATE</span>
+                <span class="date">23-04-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(10)">
+                <span>FIRST GAPPA GAPPP</span>
+                <span class="date">28-02-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(11)">
+                <span>FIRST MATTER DAY</span>
+                <span class="date">28-02-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(12)">
+                <span>FIRST BDAY TOGETHAA</span>
+                <span class="date">15-03-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(13)">
+                <span>YOU HURT YOUR EYEBROW</span>
+                <span class="date">14-08-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(14)">
+                <span>ECE SEMINAR SATURDAY HEAD</span>
+                <span class="date">21-08-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(15)">
+                <span>BROUGHT YOU TO MY AREA</span>
+                <span class="date">05-11-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(16)">
+                <span>FIRST DRESS SHOPPING DATE</span>
+                <span class="date">19-11-22</span>
+            </div>
+            <div class="connector"></div>
+            <div class="event" onclick="showEventDetails(17)">
+                <span>FIRST ART OF DELIGHT DATE</span>
+                <span class="date">24-12-22</span>
+                <div class="flowers flowers-left">🌸</div> <!-- Flower on the left side -->
+                <div class="flowers flowers-right">🌸</div> <!-- Flower on the right side -->
+            </div>
+        </div>
+    </div>
+    <div id="event-modal" class="modal">
+        <p id="event-description"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+    <script>
+        function showEventDetails(eventId) {
+            const descriptions = {
+                1: "Convo in the canteen thanks to Bhuvana, I gave you chocolate, you were wearing that mask, cute it was, you were staring at me only.",
+                2: "Saw you first time in that purple top, you came and asked me if I drink and that you wanna drink with me. Little did I know you already liked me before that itself.",
+                3: "The day I was sure you have something for me, cutely you asked me to wait that day when I was gonna leave, you were full drunk and talking about me.",
+                4: "I was full drunk and nicely you took care of me, nice pics we got, and you handled my drunk ass. Cute day but lil bit.",
+                5: "The day we really opened up to each other, walked in that road and shared all PTSD memories about my dad and all. And you told me what kind of person you expect and all that. Went home that night and didn’t sleep the whole night, full butterflies for me.",
+                6: "The most amazing, best, greatest day of my life. Tbh that was my first kiss :) When you were drunk and I was taking care of you in that special seat in Chinlungs, and you made the move on me, and I kissed. I was like wow damn I never knew I could kiss. First time I hugged you like properlyyyy. THE BESTEST DAY OF MY LIFE. LOWKEY THE DAY I CONSIDERED IT OFFICIAL",
+                7: "The day we kinda made it official, I was low and walked out of the cafe when all were in, and you came out for me. Then nicely we went to Jaffer house, and you kissed me without my consent and said yes, it's official.",
+                8: "Our first official date, we went to McD and then a special place. First time I kissed a woman properly. Amazing experience! getting my ear ate was a HOLLLLLLLYYYYYY EXPERIENCE FRRRRR!!",
+                9: "All of us went to Onesta this day, you might ask why this day is special to me, idk, it just is. First time I actually felt secure and like we did couple things. OFC WE ALSO MADE OUT IN ONESTA WASHROOM WHICH IS INSANEEEE, BEST EVERRRR!!",
+                10: "This day is like a milestone for me, CAREER DEFINING, PATH BREAKING DAY FOR ME. First time I saw you NANGU. Like wow, never did I imagine I'd ever get to see that. Like me, having sex with you!!",
+                11: "This day was very special for me. CAREER DEFINING, PATH BREAKING DAY FOR ME, FIRST TIME I SAW YOU NANGU. LIKE WOW, NEVER DID I IMAGINE I'D EVER GET TO SEE THAT. LIKE ME, HAVING SEX, WITH YOU!!",
+                12: "Man, the struggles I went through to make sure everything was perfect, ran after class with Jaffer to get the cake, he was making so late, then Hemant was crying that day for whatever reason, everyone was busy with internals. It was an internals day. I wanted to make it grand for you, and I hope I did a good job at it.",
+                13: "Like one big stuntmaster, you tried doing heroism circus in the bathroom and got hurt in your eyebrow. Don't scold me for celebrating this day. I hope you remember we hadn't texted for 6 hours, and I randomly texted you 'HARSHITHA' on WhatsApp. And you literally texted at the same moment. PEAK TELEPATHY MOMENT BETWEEN US CUZ I JUST KNEW SOMETHING WAS WRONG THAT DAY.",
+                14: "Idk man, this HJ was madddd special to me. We both happened to be wearing red that day. No one was in college. You were looking SOOOOO HOT in red kurti, bindi, open hair. Near mech, you gave head. A very special head.",
+                15: "Legendary day, gave you my area tour and nicely we went talk over table and all (head given count -1) very nice day man , showed you my home and all , very WIFE feeling i had , then we went to that park (head given count -2). Legendary duo head day , Personal best for me.",
+                16: "We went to rolling over and you got me to order the most ASS salad ever . But to compensate you let me touch you in nonveg ways there and on the way back to college in auto so that cancels out. You got me that nice black hoodie which i still have(sadly cant wear cuz i have overgrown it *sad emoji*). Very cute day , THE HEAD THAT DAY WAS IMMACULATE AND ITS A CORE MEMORY FOR ME.",
+                17: "Mannnnnnn this day was CRAZYYYYY , yes i say this for every day because every day i spent w you is just so damn special to me man . genuinely never ever ever ever ever felt bored of going out w you cuz its so fuckin funnn!! This was the first Art of delight head day which was also out 11 month celeb. Yo the head here .... as i am typing this i am having mental butterflies and tingling down there. LEGENDARY BLODDY PEAK DAY."
+            };
+            document.getElementById("event-description").innerText = descriptions[eventId];
+            document.getElementById("event-modal").style.display = "block";
+        }
+        function closeModal() {
+            document.getElementById("event-modal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
